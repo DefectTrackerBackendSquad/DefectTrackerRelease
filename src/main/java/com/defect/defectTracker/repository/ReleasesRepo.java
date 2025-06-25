@@ -14,6 +14,7 @@ import java.util.Optional;
 @Repository
 public interface ReleasesRepo extends JpaRepository<Releases, String> {
     boolean existsByReleaseId(String releaseId);
+
     @Query("SELECT r FROM Releases r WHERE " +
             "(:releaseId IS NULL OR r.releaseId = :releaseId) AND " +
             "(:releaseName IS NULL OR r.releaseName LIKE %:releaseName%) AND " +
@@ -29,6 +30,7 @@ public interface ReleasesRepo extends JpaRepository<Releases, String> {
 
     Optional<Releases> findByReleaseId(String releaseId);
     List<Releases> findByProject(Project project);
+
 
 
 }
